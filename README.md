@@ -30,4 +30,8 @@ Fichier .env : Créez un fichier .env et configurez les variables ACCOUNT_SID, A
 Exécutez generate_pdf.py pour générer un rapport météo au format PDF.
 Exécutez send_sms.py pour envoyer les informations météorologiques par SMS.
 Les fonctions de ces scripts peuvent être intégrées dans d'autres projets ou applications selon vos besoins.
-Note : Assurez-vous d'installer les bibliothèques requises en utilisant pip install -r requirements.txt.
+Note : Assurez-vous d'installer les bibliothèques requises en utilisant
+```bash
+ pip install -r requirements.txt.
+
+```
