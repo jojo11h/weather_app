@@ -1,10 +1,8 @@
 from reportlab.pdfgen import canvas
-import json
 import os
+from content_message import readfile
 
-
-with open("file.json") as file:
-    data = json.load(file)
+data = readfile('file.json')
 
 pdf_file = "weather_report.pdf"
 temp_celcius = data['main']['temp']-273.15
