@@ -11,9 +11,9 @@ auth_token = getenv('AUTH_TOKEN')
 client = Client(account_sid, auth_token)
 
 message = client.messages.create(
-    from_='+17345476725',
+    from_=getenv('AUTHOR_PHONE'),
     body=make_message(data),
-    to='+33620155408'
+    to=getenv('DEST_PHONE')
 )
 
 print(message.sid)
