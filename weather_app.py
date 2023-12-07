@@ -1,28 +1,29 @@
-import requests as r
+from os import getenv
 from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
-
-def get_goe_city(city):
-    url = f'http://api.openweathermap.org/geo/1.0/direct?q={city}&limit=5&appid={os.getenv("WEATHER_APP_KEY")}'
-    result = (r.get(url)).json()
-    lat = result[1]['lat']
-    lon = result[1]['lon']
-    return lat, lon
+from requests import get
+import json
 
 
-def weather_city(city_geo):
-    url = f'https://api.openweathermap.org/data/2.5/weather?lat={city_geo[0]}&lon={city_geo[1]}&appid={os.getenv("WEATHER_APP_KEY")}'
-    result = r.get(url).json()
-    return result["weather"]
+class WeatherApp:
+
+    def __init__(self, city) -> None:
+        load_dotenv()
+        self.weather_api = getenv("WEATHER_APP_KEY", default=None)
+        self.city = city
+
+    def get_weather_city(self):
+        url = f'https://api.openweathermap.org/data/2.5/weather?q={
+            self.city}&appid={self.weather_api}&lang=fr'
+        response = get(url)
+        response.encoding = 'ISO-8859-1'
+        return response.json()
+
+    @staticmethod
+    def write_json(data):
+        with open("file.json", "w") as file:
+            json.dump(data, file)
 
 
-user_search1 = "La Rochelle"
-user_search2 = 'Dunkerque'
-
-geo1 = get_goe_city(user_search1)
-geo2 = get_goe_city(user_search2)
-print('La Rochelle => ', weather_city(geo1))
-print('Dunkerque => ', weather_city(geo2))
+vix = WeatherApp('vix')
+data = vix.get_weather_city()
+vix.write_json(data)
