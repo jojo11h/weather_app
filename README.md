@@ -19,12 +19,9 @@ Ce script utilise l'API Twilio pour envoyer un SMS avec les informations météo
 
 Avant d'exécuter ces scripts, assurez-vous d'avoir configuré les éléments suivants :
 
-> [!IMPORTANT]
-
+>[!IMPORTANT]
 > API OpenWeatherMap : Obtenez une clé API de OpenWeatherMap et configurez-la dans le fichier WeatherApp du fichier send_sms.py.
-
 > API Twilio : Créez un compte Twilio, configurez les variables d'environnement ACCOUNT_SID, AUTH_TOKEN, AUTHOR_PHONE et DEST_PHONE dans le fichier send_sms.py.
-
 > Fichier .env : Créez un fichier .env et configurez les variables ACCOUNT_SID, AUTH_TOKEN, AUTHOR_PHONE, DEST_PHONE et WEATHER_APP_KEY.
 
 # Utilisation
